@@ -3,46 +3,755 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nazla K - Data Analyst</title>
+<title>Nazla K — Data Analyst Portfolio</title>
+<meta name="description" content="Nazla K — Data Analyst. BA Economics graduate, Google Analytics Certified, AWS Cloud. Portfolio of dashboards, data analysis and visualization projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-body{font-family:system-ui; margin:0; background:#f8fafc; color:#0f172a; line-height:1.6}
-header{background:#0f172a; color:white; padding:40px 20px; text-align:center}
-.container{max-width:850px; margin:auto; padding:20px}
-.card{background:white; border-radius:16px; padding:22px; margin:18px 0; box-shadow:0 4px 12px rgba(0,0,0,0.06)}
-h2{border-left:4px solid #2563eb; padding-left:10px}
-.badge{display:inline-block; background:#e0e7ff; color:#3730a3; padding:6px 12px; border-radius:20px; margin:4px; font-size:13px; font-weight:600}
-.btn{display:inline-block; background:#2563eb; color:white; padding:12px 18px; border-radius:10px; text-decoration:none}
-a{color:#2563eb; text-decoration:none}
+  :root{
+    --bg: #0a0e27;
+    --bg-soft: #0d1440;
+    --card: #1a2347;
+    --card-hover: #202c58;
+    --border: #2a3a6b;
+    --accent: #5eead4;
+    --accent-soft: rgba(94,234,212,0.12);
+    --accent-2: #7dd3fc;
+    --text: #f1f5f9;
+    --muted: #cbd5e1;
+    --muted-dim: #8b96b8;
+    --radius: 16px;
+    --maxw: 1120px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{
+    scroll-behavior: smooth;
+  }
+
+  body{
+    background: radial-gradient(1100px 600px at 85% -5%, rgba(94,234,212,0.08), transparent 60%),
+                radial-gradient(900px 500px at -5% 15%, rgba(125,211,252,0.06), transparent 55%),
+                var(--bg);
+    color: var(--text);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; text-decoration: none; }
+  ul{ list-style: none; }
+  img{ max-width: 100%; display:block; }
+
+  section{
+    scroll-margin-top: 84px;
+  }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10,14,39,0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(42,58,107,0.6);
+  }
+  .nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height: 72px;
+  }
+  .logo{
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: var(--text);
+  }
+  .logo span{ color: var(--accent); }
+  .nav-links{
+    display:flex;
+    gap: 34px;
+  }
+  .nav-links a{
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--muted);
+    transition: color .2s ease;
+    position: relative;
+  }
+  .nav-links a:hover{ color: var(--text); }
+  .nav-cta{
+    display:inline-block;
+    padding: 9px 20px;
+    background: var(--accent);
+    color: #05221d;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 999px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .nav-cta:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(94,234,212,0.25);
+  }
+  .nav-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding: 6px;
+  }
+  .nav-toggle span{
+    width: 22px; height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+  }
+
+  /* ---------- Hero / About ---------- */
+  .hero{
+    padding: 168px 0 96px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(94,234,212,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94,234,212,0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(circle at 80% 10%, black, transparent 60%);
+    -webkit-mask-image: radial-gradient(circle at 80% 10%, black, transparent 60%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items:center;
+    position: relative;
+  }
+  .photo-wrap{
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    padding: 6px;
+    background: conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
+    box-shadow: 0 0 0 1px rgba(94,234,212,0.15), 0 25px 60px -20px rgba(94,234,212,0.35);
+    animation: fadeUp .7s ease both;
+  }
+  .photo-wrap .inner{
+    width:100%; height:100%;
+    border-radius: 50%;
+    overflow:hidden;
+    background: var(--card);
+    border: 4px solid var(--bg);
+  }
+  .photo-wrap img{
+    width:100%; height:100%;
+    object-fit: cover;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 14px;
+    animation: fadeUp .7s ease both .05s;
+  }
+  .eyebrow::before{
+    content:"";
+    width:8px; height:8px;
+    border-radius:50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+  h1.title{
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    animation: fadeUp .7s ease both .1s;
+  }
+  .role-line{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--accent-2);
+    margin-bottom: 18px;
+    animation: fadeUp .7s ease both .15s;
+  }
+  .about-desc{
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 640px;
+    margin-bottom: 10px;
+    animation: fadeUp .7s ease both .2s;
+  }
+  .contact-strip{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 18px;
+    margin: 22px 0 30px;
+    color: var(--muted-dim);
+    font-size: 14.5px;
+    animation: fadeUp .7s ease both .25s;
+  }
+  .contact-strip li{ display:flex; align-items:center; gap:8px; }
+  .contact-strip svg{ width:16px; height:16px; stroke: var(--accent); flex-shrink:0; }
+
+  .btn-row{
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp .7s ease both .3s;
+  }
+  .btn{
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14.5px;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background: var(--accent);
+    color: #05221d;
+  }
+  .btn-primary:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(94,234,212,0.3);
+  }
+  .btn-ghost{
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: rgba(255,255,255,0.02);
+  }
+  .btn-ghost:hover{
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(14px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* ---------- Section heading ---------- */
+  .section-head{
+    margin-bottom: 44px;
+  }
+  .section-label{
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .section-title{
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+  .section-sub{
+    color: var(--muted-dim);
+    font-size: 15.5px;
+    margin-top: 10px;
+    max-width: 560px;
+  }
+
+  section.block{ padding: 90px 0; }
+  section.block.alt{
+    background: linear-gradient(180deg, rgba(26,35,71,0.35), rgba(26,35,71,0));
+    border-top: 1px solid rgba(42,58,107,0.4);
+    border-bottom: 1px solid rgba(42,58,107,0.4);
+  }
+
+  /* ---------- Skills grid ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+  .skill-card{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 26px;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .skill-card:hover{
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    background: var(--card-hover);
+  }
+  .skill-icon{
+    width: 42px; height:42px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 16px;
+  }
+  .skill-icon svg{ width:22px; height:22px; stroke: var(--accent); }
+  .skill-card h3{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .skill-card p{
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+
+  /* ---------- Projects ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .project-card{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    display:flex;
+    flex-direction:column;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .project-card:hover{
+    transform: translateY(-6px);
+    border-color: var(--accent-2);
+    box-shadow: 0 20px 45px -25px rgba(125,211,252,0.4);
+  }
+  .project-tag{
+    display:inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-2);
+    background: rgba(125,211,252,0.1);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+  .project-card h3{
+    font-size: 18.5px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height:1.35;
+  }
+  .project-card p{
+    color: var(--muted);
+    font-size: 14.3px;
+    margin-bottom: 18px;
+    flex-grow:1;
+  }
+  .pill-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 8px;
+  }
+  .pill{
+    font-size: 12px;
+    color: var(--muted-dim);
+    border: 1px solid var(--border);
+    padding: 5px 11px;
+    border-radius: 999px;
+  }
+
+  /* ---------- Certifications ---------- */
+  .cert-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .cert-card{
+    display:flex;
+    gap: 18px;
+    align-items:flex-start;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: transform .25s ease, border-color .25s ease;
+  }
+  .cert-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+  .cert-badge{
+    width: 46px; height:46px;
+    flex-shrink:0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cert-badge svg{ width:22px; height:22px; stroke:#04211d; }
+  .cert-card h3{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .cert-card p{
+    color: var(--muted-dim);
+    font-size: 13.5px;
+  }
+
+  /* ---------- Education timeline ---------- */
+  .timeline{
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left: 6px; top:6px; bottom:6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), transparent);
+  }
+  .tl-item{
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left: -32px; top: 4px;
+    width: 14px; height:14px;
+    border-radius:50%;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+  }
+  .tl-date{
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .tl-item h3{
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .tl-item p{
+    color: var(--muted);
+    font-size: 14.3px;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-block{
+    text-align:center;
+  }
+  .contact-block .section-title{ font-size: 36px; }
+  .contact-block .section-sub{
+    margin: 14px auto 0;
+    text-align:center;
+  }
+  .contact-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap: 16px;
+    margin-top: 38px;
+  }
+  .contact-buttons svg{ width:18px; height:18px; }
+  .contact-meta{
+    margin-top: 34px;
+    display:flex;
+    justify-content:center;
+    gap: 28px;
+    flex-wrap:wrap;
+    color: var(--muted-dim);
+    font-size: 14.5px;
+  }
+  .contact-meta li{ display:flex; align-items:center; gap:8px; }
+  .contact-meta svg{ width:16px; height:16px; stroke:var(--accent); }
+
+  footer{
+    padding: 32px 0 40px;
+    text-align:center;
+    color: var(--muted-dim);
+    font-size: 13.5px;
+    border-top: 1px solid rgba(42,58,107,0.4);
+  }
+  footer span{ color: var(--accent); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px){
+    .hero-grid{
+      grid-template-columns: 1fr;
+      text-align:center;
+      gap: 36px;
+    }
+    .photo-wrap{ margin: 0 auto; }
+    .contact-strip, .btn-row, .contact-meta{ justify-content:center; }
+    .about-desc{ margin-left:auto; margin-right:auto; }
+    .skills-grid, .cert-grid{ grid-template-columns: 1fr; }
+    .projects-grid{ grid-template-columns: 1fr; }
+    h1.title{ font-size: 36px; }
+  }
+
+  @media (max-width: 640px){
+    .wrap{ padding: 0 20px; }
+    .nav-links{
+      position: fixed;
+      top: 72px; left:0; right:0;
+      background: rgba(10,14,39,0.98);
+      flex-direction:column;
+      padding: 20px 28px 28px;
+      gap: 18px;
+      border-bottom: 1px solid var(--border);
+      transform: translateY(-130%);
+      transition: transform .3s ease;
+    }
+    .nav-links.open{ transform: translateY(0); }
+    .nav-toggle{ display:flex; }
+    .nav .nav-cta{ display:none; }
+    .hero{ padding: 132px 0 64px; }
+    section.block{ padding: 64px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
-<header>
-<h1>Nazla K</h1>
-<p>Aspiring Data Analyst | BA Economics | Kannur, Kerala</p>
-<p>knazla2006@gmail.com | github.com/Nazla-naaz</p>
-<a class="btn" href="#projects">View Projects</a>
-</header>
-<div class="container">
-<div class="card">
-<h2>About Me</h2>
-<p>Fresher Data Analyst from Kannur. BA Economics 2026 Kannur University. Google Analytics Certified (ID: 192852264). Hands-on in Excel, Power BI, SQL. Built Sales Dashboard with 500+ records. Seeking entry-level WFH roles.</p>
-<span class="badge">Excel</span><span class="badge">Power BI</span><span class="badge">SQL</span><span class="badge">Google Analytics</span><span class="badge">Python</span>
-</div>
-<div class="card" id="projects">
-<h2>Featured Projects</h2>
-<h3>1. Sales Dashboard - 500+ Records</h3>
-<p>Cleaned data, Pivot Tables, VLOOKUP, Power BI visuals - Total Sales, Region, Monthly Trend, Top Products.</p>
-<h3>2. Google Analytics Traffic Analysis</h3>
-<p>Analyzed acquisition, bounce rate, sessions. Cert ID: 192852264</p>
-</div>
-<div class="card">
-<h2>Education</h2>
-<p>BA Economics - Kannur University, 2026<br>Google Analytics Certified<br>AWS Data Engineering - Learning</p>
-</div>
-<div class="card">
-<h2>Contact</h2>
-<p>Kannur, Kerala - WFH<br>Portfolio: https://nazla-naaz.github.io</p>
-</div>
-</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#about" class="logo">Nazla<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- About / Hero -->
+<section id="about" class="hero">
+  <div class="wrap hero-grid">
+    <div class="photo-wrap">
+      <div class="inner">
+        <img src="your-photo.jpg" alt="Nazla K">
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">About Me</div>
+      <h1 class="title">Nazla K</h1>
+      <div class="role-line">Data Analyst | BA Economics Graduate | Google Analytics Certified | AWS Cloud</div>
+      <p class="about-desc">I turn raw, messy data into dashboards and reports people can actually act on. My background in Economics and Statistics shapes how I approach every dataset — I look for the story behind the numbers before I ever open a chart.</p>
+      <p class="about-desc">From sales dashboards to website traffic analysis, I enjoy the full path from cleaning data to presenting a finding that changes a decision.</p>
+      <ul class="contact-strip">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/><path d="m22 6-10 7L2 6"/></svg>knazlaofficial@gmail.com</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>7293205300</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kannur, Kerala, India</li>
+      </ul>
+      <div class="btn-row">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">What I do</div>
+      <h2 class="section-title">Skills</h2>
+      <p class="section-sub">The tools and techniques I use to move from raw data to a decision-ready dashboard.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
+        <h3>Data Analysis</h3>
+        <p>EDA, data cleaning, statistics, Excel, Python basics</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18"/><path d="M3 12h18"/></svg></div>
+        <h3>Data Visualization</h3>
+        <p>Power BI, Tableau, Matplotlib, dashboard creation, business charts</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div>
+        <h3>Databases</h3>
+        <p>SQL, VLOOKUP, HLOOKUP, XLOOKUP, pivot tables, data modeling</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-4 4"/><circle cx="19" cy="9" r="1"/></svg></div>
+        <h3>Predictive Analytics</h3>
+        <p>Machine learning basics, forecasting, SQL queries</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Recent work</div>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-sub">A few dashboards and analyses built end-to-end — from raw data to a finished report.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-tag">500+ records</span>
+        <h3>Sales Dashboard</h3>
+        <p>Built an end-to-end sales dashboard from multi-source data: collection, cleaning, and validation, with trend identification using SUMIF and COUNTIF.</p>
+        <div class="pill-row">
+          <span class="pill">Excel</span><span class="pill">Power BI</span><span class="pill">VLOOKUP</span><span class="pill">Pivot Tables</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">E-commerce</span>
+        <h3>Amazon &amp; Walmart Sales Analysis</h3>
+        <p>Analyzed customer behavior and seasonal trends to build demand forecasts and KPI reports for e-commerce performance.</p>
+        <div class="pill-row">
+          <span class="pill">Power BI</span><span class="pill">Forecasting</span><span class="pill">KPI Reporting</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Web analytics</span>
+        <h3>Google Analytics Website Traffic Analysis</h3>
+        <p>Tracked data-driven initiatives and conversion optimization to guide site and campaign decisions.</p>
+        <div class="pill-row">
+          <span class="pill">Google Analytics</span><span class="pill">Conversion Optimization</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications" class="block alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+      <p class="section-sub">Structured learning that backs up the hands-on project work.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div>
+        <div>
+          <h3>Google Analytics Certified</h3>
+          <p>ID: 192852264 — Google (2026)</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div>
+        <div>
+          <h3>AWS Data Engineering</h3>
+          <p>AWS + FutureSkills Prime</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div>
+        <div>
+          <h3>Deloitte Data Analytics Simulation</h3>
+          <p>Forage</p>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div>
+        <div>
+          <h3>IBM Data Analyst, Excel, Generative AI, Power BI</h3>
+          <p>11+ certificates — full list on GitHub</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Background</div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2023 — 2026</div>
+        <h3>Nirmalagiri College, Kuthuparamba — Kannur University</h3>
+        <p>BA Economics, Completed — Statistics, Econometrics, Mathematics</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2021 — 2023</div>
+        <h3>AKGM GHSS, Pinarayi</h3>
+        <p>Higher Secondary (Plus Two)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="block alt contact-block">
+  <div class="wrap">
+    <div class="section-label">Let's talk</div>
+    <h2 class="section-title">Have a dataset that needs a story?</h2>
+    <p class="section-sub">I'm open to Data Analyst roles and freelance dashboard work — reach out any time.</p>
+    <div class="contact-buttons">
+      <a href="mailto:knazlaofficial@gmail.com" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#05221d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/><path d="m22 6-10 7L2 6"/></svg>
+        Email Me
+      </a>
+      <a href="https://www.linkedin.com/in/nazla-k-090561428" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Nazla-naaz" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+    <ul class="contact-meta">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>7293205300</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Kannur, Kerala, India</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Nazla K<span> · </span>Data Analyst Portfolio</div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+
 </body>
 </html>
